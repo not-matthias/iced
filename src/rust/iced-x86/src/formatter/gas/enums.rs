@@ -54,7 +54,7 @@ pub(crate) enum CtorKind {
 	Reg32,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CTOR_KIND: [&str; 43] = [
+const GEN_DEBUG_CTOR_KIND: [&str; 43] = [
 	"Previous",
 	"Normal_1",
 	"Normal_2a",
@@ -126,7 +126,7 @@ pub(crate) enum SizeOverride {
 	Size64,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_SIZE_OVERRIDE: [&str; 4] = [
+const GEN_DEBUG_SIZE_OVERRIDE: [&str; 4] = [
 	"None",
 	"Size16",
 	"Size32",
@@ -220,7 +220,7 @@ pub(crate) enum InstrOpKind {
 	DeclareQword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_INSTR_OP_KIND: [&str; 38] = [
+const GEN_DEBUG_INSTR_OP_KIND: [&str; 38] = [
 	"Register",
 	"NearBranch16",
 	"NearBranch32",

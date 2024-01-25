@@ -39471,7 +39471,7 @@ pub enum Code {
 	VEX_Vsm3rnds2_xmm_xmm_xmmm128_imm8 = 4935,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CODE: [&str; 4936] = [
+const GEN_DEBUG_CODE: [&str; 4936] = [
 	"INVALID",
 	"DeclareByte",
 	"DeclareWord",

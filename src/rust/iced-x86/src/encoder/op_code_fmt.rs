@@ -24,7 +24,7 @@ pub(crate) enum LKind {
 	LZ,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_LKIND: [&str; 4] = [
+const GEN_DEBUG_LKIND: [&str; 4] = [
 	"None",
 	"L128",
 	"L0",

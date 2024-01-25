@@ -714,7 +714,7 @@ pub enum MemorySize {
 	Broadcast512_2xBFloat16 = 161,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_MEMORY_SIZE: [&str; 162] = [
+const GEN_DEBUG_MEMORY_SIZE: [&str; 162] = [
 	"Unknown",
 	"UInt8",
 	"UInt16",

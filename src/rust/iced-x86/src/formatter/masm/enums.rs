@@ -60,7 +60,7 @@ pub(crate) enum CtorKind {
 	XLAT,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CTOR_KIND: [&str; 49] = [
+const GEN_DEBUG_CTOR_KIND: [&str; 49] = [
 	"Previous",
 	"Normal_1",
 	"Normal_2",
@@ -187,7 +187,7 @@ pub(crate) enum InstrOpKind {
 	DeclareQword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_INSTR_OP_KIND: [&str; 30] = [
+const GEN_DEBUG_INSTR_OP_KIND: [&str; 30] = [
 	"Register",
 	"NearBranch16",
 	"NearBranch32",

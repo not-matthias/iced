@@ -6,7 +6,7 @@
 use crate::OpCodeOperandKind;
 
 #[rustfmt::skip]
-pub(super) static LEGACY_OP_KINDS: [OpCodeOperandKind; 76] = [
+pub(super) const LEGACY_OP_KINDS: [OpCodeOperandKind; 76] = [
 	OpCodeOperandKind::None,
 	OpCodeOperandKind::farbr2_2,
 	OpCodeOperandKind::farbr4_2,
@@ -87,7 +87,7 @@ pub(super) static LEGACY_OP_KINDS: [OpCodeOperandKind; 76] = [
 
 #[rustfmt::skip]
 #[cfg(not(feature = "no_vex"))]
-pub(super) static VEX_OP_KINDS: [OpCodeOperandKind; 39] = [
+pub(super) const VEX_OP_KINDS: [OpCodeOperandKind; 39] = [
 	OpCodeOperandKind::None,
 	OpCodeOperandKind::mem,
 	OpCodeOperandKind::mem_vsib32x,
@@ -131,7 +131,7 @@ pub(super) static VEX_OP_KINDS: [OpCodeOperandKind; 39] = [
 
 #[rustfmt::skip]
 #[cfg(not(feature = "no_xop"))]
-pub(super) static XOP_OP_KINDS: [OpCodeOperandKind; 19] = [
+pub(super) const XOP_OP_KINDS: [OpCodeOperandKind; 19] = [
 	OpCodeOperandKind::None,
 	OpCodeOperandKind::r32_or_mem,
 	OpCodeOperandKind::r64_or_mem,
@@ -155,7 +155,7 @@ pub(super) static XOP_OP_KINDS: [OpCodeOperandKind; 19] = [
 
 #[rustfmt::skip]
 #[cfg(not(feature = "no_evex"))]
-pub(super) static EVEX_OP_KINDS: [OpCodeOperandKind; 32] = [
+pub(super) const EVEX_OP_KINDS: [OpCodeOperandKind; 32] = [
 	OpCodeOperandKind::None,
 	OpCodeOperandKind::mem,
 	OpCodeOperandKind::mem_vsib32x,
@@ -192,7 +192,7 @@ pub(super) static EVEX_OP_KINDS: [OpCodeOperandKind; 32] = [
 
 #[rustfmt::skip]
 #[cfg(feature = "mvex")]
-pub(super) static MVEX_OP_KINDS: [OpCodeOperandKind; 9] = [
+pub(super) const MVEX_OP_KINDS: [OpCodeOperandKind; 9] = [
 	OpCodeOperandKind::None,
 	OpCodeOperandKind::mem,
 	OpCodeOperandKind::mem_vsib32z,

@@ -405,7 +405,7 @@ namespace Generator.Encoder.Lua {
 				writer.WriteFileHeader();
 				var type = table.Groups.Length <= 256 ? "u8" : "u16";
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(crate) static GROUP_INDEXES: [{type}; {table.CodeIndexes.Length}] = [");
+				writer.WriteLine($"pub(crate) const GROUP_INDEXES: [{type}; {table.CodeIndexes.Length}] = [");
 				using (writer.Indent()) {
 					const int valuesPerLine = 32;
 					for (int i = 0; i < table.CodeIndexes.Length; i += valuesPerLine) {

@@ -7,7 +7,7 @@ use crate::mvex::mvex_info::MvexInfo;
 use crate::{MvexConvFn, MvexEHBit, MvexTupleTypeLutKind};
 
 #[rustfmt::skip]
-pub(super) static MVEX_INFO: [MvexInfo; 207] = [
+pub(super) const MVEX_INFO: [MvexInfo; 207] = [
 	MvexInfo::new(MvexTupleTypeLutKind::Int32, MvexEHBit::None, MvexConvFn::None, 0xFE, 0xFF, 0x40, 0x06),// Code::MVEX_Vprefetchnta_m
 	MvexInfo::new(MvexTupleTypeLutKind::Int32, MvexEHBit::None, MvexConvFn::None, 0xFE, 0xFF, 0x40, 0x06),// Code::MVEX_Vprefetch0_m
 	MvexInfo::new(MvexTupleTypeLutKind::Int32, MvexEHBit::None, MvexConvFn::None, 0xFE, 0xFF, 0x40, 0x06),// Code::MVEX_Vprefetch1_m

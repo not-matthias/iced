@@ -25,7 +25,7 @@ namespace Generator.Decoder.Rust {
 				writer.WriteLine($"use crate::iced_constants::{icedConstants.Name(idConverter)};");
 				writer.WriteLine();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static OP_COUNT: [u8; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
+				writer.WriteLine($"pub(super) const OP_COUNT: [u8; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs)
 						writer.WriteLine($"{def.OpCount},// {def.Code.Name(idConverter)}");

@@ -6,7 +6,7 @@
 use crate::iced_constants::IcedConstants;
 
 #[rustfmt::skip]
-pub(super) static OP_COUNT: [u8; IcedConstants::CODE_ENUM_COUNT] = [
+pub(super) const OP_COUNT: [u8; IcedConstants::CODE_ENUM_COUNT] = [
 	0,// INVALID
 	0,// DeclareByte
 	0,// DeclareWord

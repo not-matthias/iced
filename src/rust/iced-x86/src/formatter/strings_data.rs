@@ -11,7 +11,7 @@ pub(super) const VALID_STRING_LENGTH: usize = 20;
 pub(super) const PADDING_SIZE: usize = 11;
 
 #[rustfmt::skip]
-pub(super) static STRINGS_TBL_DATA: [u8; 14794] = [
+pub(super) const STRINGS_TBL_DATA: [u8; 14794] = [
 	0x05, 0x75, 0x6E, 0x64, 0x6F, 0x63,// undoc
 	0x03, 0x6D, 0x6F, 0x76,// mov
 	0x03, 0x6E, 0x6F, 0x70,// nop

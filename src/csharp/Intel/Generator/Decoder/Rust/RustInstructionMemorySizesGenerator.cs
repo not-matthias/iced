@@ -28,7 +28,7 @@ namespace Generator.Decoder.Rust {
 				writer.WriteLine($"use crate::{genTypes[TypeIds.MemorySize].Name(idConverter)};");
 				writer.WriteLine();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static SIZES_NORMAL: [{memSizeName}; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
+				writer.WriteLine($"pub(super) const SIZES_NORMAL: [{memSizeName}; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						if (def.Memory.Value > byte.MaxValue)
@@ -40,7 +40,7 @@ namespace Generator.Decoder.Rust {
 				writer.WriteLine("];");
 				writer.WriteLine();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static SIZES_BCST: [{memSizeName}; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
+				writer.WriteLine($"pub(super) const SIZES_BCST: [{memSizeName}; {icedConstants.Name(idConverter)}::{icedConstants[IcedConstants.GetEnumCountName(TypeIds.Code)].Name(idConverter)}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						if (def.MemoryBroadcast.Value > byte.MaxValue)

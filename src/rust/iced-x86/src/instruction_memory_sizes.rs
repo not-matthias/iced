@@ -7,7 +7,7 @@ use crate::iced_constants::IcedConstants;
 use crate::MemorySize;
 
 #[rustfmt::skip]
-pub(super) static SIZES_NORMAL: [MemorySize; IcedConstants::CODE_ENUM_COUNT] = [
+pub(super) const SIZES_NORMAL: [MemorySize; IcedConstants::CODE_ENUM_COUNT] = [
 	MemorySize::Unknown,// INVALID
 	MemorySize::Unknown,// DeclareByte
 	MemorySize::Unknown,// DeclareWord
@@ -4947,7 +4947,7 @@ pub(super) static SIZES_NORMAL: [MemorySize; IcedConstants::CODE_ENUM_COUNT] = [
 ];
 
 #[rustfmt::skip]
-pub(super) static SIZES_BCST: [MemorySize; IcedConstants::CODE_ENUM_COUNT] = [
+pub(super) const SIZES_BCST: [MemorySize; IcedConstants::CODE_ENUM_COUNT] = [
 	MemorySize::Unknown,// INVALID
 	MemorySize::Unknown,// DeclareByte
 	MemorySize::Unknown,// DeclareWord

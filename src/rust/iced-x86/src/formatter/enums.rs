@@ -21,7 +21,7 @@ pub enum NumberBase {
 	Binary = 3,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_NUMBER_BASE: [&str; 4] = [
+const GEN_DEBUG_NUMBER_BASE: [&str; 4] = [
 	"Hexadecimal",
 	"Decimal",
 	"Octal",
@@ -191,7 +191,7 @@ pub enum PrefixKind {
 	Xrelease = 17,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_PREFIX_KIND: [&str; 18] = [
+const GEN_DEBUG_PREFIX_KIND: [&str; 18] = [
 	"ES",
 	"CS",
 	"SS",
@@ -352,7 +352,7 @@ pub enum DecoratorKind {
 	EvictionHint = 5,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_DECORATOR_KIND: [&str; 6] = [
+const GEN_DEBUG_DECORATOR_KIND: [&str; 6] = [
 	"Broadcast",
 	"RoundingControl",
 	"SuppressAllExceptions",
@@ -498,7 +498,7 @@ pub enum NumberKind {
 	UInt64 = 7,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_NUMBER_KIND: [&str; 8] = [
+const GEN_DEBUG_NUMBER_KIND: [&str; 8] = [
 	"Int8",
 	"UInt8",
 	"Int16",
@@ -643,7 +643,7 @@ pub(crate) enum FormatterFlowControl {
 	Xbegin,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_FORMATTER_FLOW_CONTROL: [&str; 7] = [
+const GEN_DEBUG_FORMATTER_FLOW_CONTROL: [&str; 7] = [
 	"AlwaysShortBranch",
 	"ShortBranch",
 	"NearBranch",
@@ -681,7 +681,7 @@ pub enum CC_b {
 	nae = 2,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_B: [&str; 3] = [
+const GEN_DEBUG_CC_B: [&str; 3] = [
 	"b",
 	"c",
 	"nae",
@@ -821,7 +821,7 @@ pub enum CC_ae {
 	nc = 2,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_AE: [&str; 3] = [
+const GEN_DEBUG_CC_AE: [&str; 3] = [
 	"ae",
 	"nb",
 	"nc",
@@ -959,7 +959,7 @@ pub enum CC_e {
 	z = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_E: [&str; 2] = [
+const GEN_DEBUG_CC_E: [&str; 2] = [
 	"e",
 	"z",
 ];
@@ -1096,7 +1096,7 @@ pub enum CC_ne {
 	nz = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_NE: [&str; 2] = [
+const GEN_DEBUG_CC_NE: [&str; 2] = [
 	"ne",
 	"nz",
 ];
@@ -1233,7 +1233,7 @@ pub enum CC_be {
 	na = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_BE: [&str; 2] = [
+const GEN_DEBUG_CC_BE: [&str; 2] = [
 	"be",
 	"na",
 ];
@@ -1370,7 +1370,7 @@ pub enum CC_a {
 	nbe = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_A: [&str; 2] = [
+const GEN_DEBUG_CC_A: [&str; 2] = [
 	"a",
 	"nbe",
 ];
@@ -1507,7 +1507,7 @@ pub enum CC_p {
 	pe = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_P: [&str; 2] = [
+const GEN_DEBUG_CC_P: [&str; 2] = [
 	"p",
 	"pe",
 ];
@@ -1644,7 +1644,7 @@ pub enum CC_np {
 	po = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_NP: [&str; 2] = [
+const GEN_DEBUG_CC_NP: [&str; 2] = [
 	"np",
 	"po",
 ];
@@ -1781,7 +1781,7 @@ pub enum CC_l {
 	nge = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_L: [&str; 2] = [
+const GEN_DEBUG_CC_L: [&str; 2] = [
 	"l",
 	"nge",
 ];
@@ -1918,7 +1918,7 @@ pub enum CC_ge {
 	nl = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_GE: [&str; 2] = [
+const GEN_DEBUG_CC_GE: [&str; 2] = [
 	"ge",
 	"nl",
 ];
@@ -2055,7 +2055,7 @@ pub enum CC_le {
 	ng = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_LE: [&str; 2] = [
+const GEN_DEBUG_CC_LE: [&str; 2] = [
 	"le",
 	"ng",
 ];
@@ -2192,7 +2192,7 @@ pub enum CC_g {
 	nle = 1,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CC_G: [&str; 2] = [
+const GEN_DEBUG_CC_G: [&str; 2] = [
 	"g",
 	"nle",
 ];

@@ -6,7 +6,7 @@
 use crate::TupleType;
 
 #[rustfmt::skip]
-pub(crate) static MVEX_TUPLE_TYPE_LUT: [TupleType; 112] = [
+pub(crate) const MVEX_TUPLE_TYPE_LUT: [TupleType; 112] = [
 	// MvexTupleTypeLutKind::Int32
 	TupleType::N64,// 0
 	TupleType::N4,// 1

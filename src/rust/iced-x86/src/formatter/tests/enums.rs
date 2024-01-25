@@ -75,7 +75,7 @@ pub(crate) enum OptionsProps {
 	ShowUselessPrefixes,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_OPTIONS_PROPS: [&str; 64] = [
+const GEN_DEBUG_OPTIONS_PROPS: [&str; 64] = [
 	"AddLeadingZeroToHexNumbers",
 	"AlwaysShowScale",
 	"AlwaysShowSegmentRegister",

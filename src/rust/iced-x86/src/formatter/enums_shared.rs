@@ -62,7 +62,7 @@ pub enum FormatterTextKind {
 	Function = 15,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_FORMATTER_TEXT_KIND: [&str; 16] = [
+const GEN_DEBUG_FORMATTER_TEXT_KIND: [&str; 16] = [
 	"Text",
 	"Directive",
 	"Prefix",
@@ -241,7 +241,7 @@ pub(crate) enum PseudoOpsKind {
 	vpcmpud6,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_PSEUDO_OPS_KIND: [&str; 32] = [
+const GEN_DEBUG_PSEUDO_OPS_KIND: [&str; 32] = [
 	"cmpps",
 	"vcmpps",
 	"cmppd",
@@ -305,7 +305,7 @@ pub enum MemorySizeOptions {
 	Never = 3,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_MEMORY_SIZE_OPTIONS: [&str; 4] = [
+const GEN_DEBUG_MEMORY_SIZE_OPTIONS: [&str; 4] = [
 	"Default",
 	"Always",
 	"Minimal",

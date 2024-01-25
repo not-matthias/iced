@@ -232,7 +232,7 @@ namespace Generator.Enums.Rust {
 				if (feature is not null)
 					writer.WriteLine(feature);
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static {arrayName}: [&str; {enumValues.Length}] = [");
+				writer.WriteLine($"const {arrayName}: [&str; {enumValues.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var value in enumValues)
 						writer.WriteLine($"\"{value.Name(idConverter)}\",");

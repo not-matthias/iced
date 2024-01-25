@@ -7,7 +7,7 @@ use crate::iced_constants::IcedConstants;
 use crate::Mnemonic;
 
 #[rustfmt::skip]
-pub(super) static TO_MNEMONIC: [Mnemonic; IcedConstants::CODE_ENUM_COUNT] = [
+pub(super) const TO_MNEMONIC: [Mnemonic; IcedConstants::CODE_ENUM_COUNT] = [
 	Mnemonic::INVALID,// INVALID
 	Mnemonic::Db,// DeclareByte
 	Mnemonic::Dw,// DeclareWord

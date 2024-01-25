@@ -21,7 +21,7 @@ pub(crate) enum DisplSize {
 	RipRelSize4_Target64,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_DISPL_SIZE: [&str; 7] = [
+const GEN_DEBUG_DISPL_SIZE: [&str; 7] = [
 	"None",
 	"Size1",
 	"Size2",
@@ -76,7 +76,7 @@ pub(crate) enum ImmSize {
 	Size1OpCode,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_IMM_SIZE: [&str; 19] = [
+const GEN_DEBUG_IMM_SIZE: [&str; 19] = [
 	"None",
 	"Size1",
 	"Size2",
@@ -152,7 +152,7 @@ pub(crate) enum LegacyOpCodeTable {
 	MAP0F3A,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_LEGACY_OP_CODE_TABLE: [&str; 4] = [
+const GEN_DEBUG_LEGACY_OP_CODE_TABLE: [&str; 4] = [
 	"MAP0",
 	"MAP0F",
 	"MAP0F38",
@@ -187,7 +187,7 @@ pub(crate) enum VexOpCodeTable {
 }
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static GEN_DEBUG_VEX_OP_CODE_TABLE: [&str; 4] = [
+const GEN_DEBUG_VEX_OP_CODE_TABLE: [&str; 4] = [
 	"MAP0",
 	"MAP0F",
 	"MAP0F38",
@@ -223,7 +223,7 @@ pub(crate) enum XopOpCodeTable {
 }
 #[cfg(not(feature = "no_xop"))]
 #[rustfmt::skip]
-static GEN_DEBUG_XOP_OP_CODE_TABLE: [&str; 3] = [
+const GEN_DEBUG_XOP_OP_CODE_TABLE: [&str; 3] = [
 	"MAP8",
 	"MAP9",
 	"MAP10",
@@ -492,7 +492,7 @@ pub(crate) enum DecOptionValue {
 }
 #[cfg(all(feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_DEC_OPTION_VALUE: [&str; 18] = [
+const GEN_DEBUG_DEC_OPTION_VALUE: [&str; 18] = [
 	"None",
 	"ALTINST",
 	"Cl1invmb",
@@ -546,7 +546,7 @@ pub(crate) enum InstrStrFmtOption {
 }
 #[cfg(all(feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_INSTR_STR_FMT_OPTION: [&str; 7] = [
+const GEN_DEBUG_INSTR_STR_FMT_OPTION: [&str; 7] = [
 	"None",
 	"OpMaskIsK1_or_NoGprSuffix",
 	"IncVecIndex",
@@ -586,7 +586,7 @@ pub(crate) enum WBit {
 }
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop"), not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static GEN_DEBUG_WBIT: [&str; 4] = [
+const GEN_DEBUG_WBIT: [&str; 4] = [
 	"W0",
 	"W1",
 	"WIG",
@@ -626,7 +626,7 @@ pub(crate) enum LBit {
 }
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop"), not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static GEN_DEBUG_LBIT: [&str; 7] = [
+const GEN_DEBUG_LBIT: [&str; 7] = [
 	"L0",
 	"L1",
 	"LIG",
@@ -666,7 +666,7 @@ pub enum RepPrefixKind {
 	Repne = 2,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_REP_PREFIX_KIND: [&str; 3] = [
+const GEN_DEBUG_REP_PREFIX_KIND: [&str; 3] = [
 	"None",
 	"Repe",
 	"Repne",

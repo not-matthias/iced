@@ -16,7 +16,7 @@ pub enum RelocKind {
 	Offset64 = 0,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_RELOC_KIND: [&str; 1] = [
+const GEN_DEBUG_RELOC_KIND: [&str; 1] = [
 	"Offset64",
 ];
 impl fmt::Debug for RelocKind {

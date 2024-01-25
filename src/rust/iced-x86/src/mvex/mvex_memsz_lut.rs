@@ -6,7 +6,7 @@
 use crate::MemorySize;
 
 #[rustfmt::skip]
-pub(crate) static MVEX_MEMSZ_LUT: [MemorySize; 112] = [
+pub(crate) const MVEX_MEMSZ_LUT: [MemorySize; 112] = [
 	// MvexTupleTypeLutKind::Int32
 	MemorySize::Packed512_Int32,// 0
 	MemorySize::Int32,// 1

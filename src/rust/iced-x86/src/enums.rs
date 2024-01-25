@@ -21,7 +21,7 @@ pub enum CodeSize {
 	Code64 = 3,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CODE_SIZE: [&str; 4] = [
+const GEN_DEBUG_CODE_SIZE: [&str; 4] = [
 	"Unknown",
 	"Code16",
 	"Code32",
@@ -165,7 +165,7 @@ pub enum RoundingControl {
 	RoundTowardZero = 4,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_ROUNDING_CONTROL: [&str; 5] = [
+const GEN_DEBUG_ROUNDING_CONTROL: [&str; 5] = [
 	"None",
 	"RoundToNearest",
 	"RoundDown",
@@ -432,7 +432,7 @@ pub enum OpKind {
 	Memory = 24,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_OP_KIND: [&str; 25] = [
+const GEN_DEBUG_OP_KIND: [&str; 25] = [
 	"Register",
 	"NearBranch16",
 	"NearBranch32",
@@ -594,7 +594,7 @@ pub(crate) enum VectorLength {
 }
 #[cfg(any(feature = "decoder", feature = "encoder"))]
 #[rustfmt::skip]
-static GEN_DEBUG_VECTOR_LENGTH: [&str; 4] = [
+const GEN_DEBUG_VECTOR_LENGTH: [&str; 4] = [
 	"L128",
 	"L256",
 	"L512",
@@ -630,7 +630,7 @@ pub(crate) enum MandatoryPrefixByte {
 }
 #[cfg(feature = "encoder")]
 #[rustfmt::skip]
-static GEN_DEBUG_MANDATORY_PREFIX_BYTE: [&str; 4] = [
+const GEN_DEBUG_MANDATORY_PREFIX_BYTE: [&str; 4] = [
 	"None",
 	"P66",
 	"PF3",
@@ -675,7 +675,7 @@ pub enum EncodingKind {
 }
 #[cfg(any(feature = "decoder", feature = "encoder", feature = "instr_info", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_ENCODING_KIND: [&str; 6] = [
+const GEN_DEBUG_ENCODING_KIND: [&str; 6] = [
 	"Legacy",
 	"VEX",
 	"EVEX",
@@ -861,7 +861,7 @@ pub enum TupleType {
 }
 #[cfg(any(feature = "decoder", feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_TUPLE_TYPE: [&str; 19] = [
+const GEN_DEBUG_TUPLE_TYPE: [&str; 19] = [
 	"N1",
 	"N2",
 	"N4",
@@ -1042,7 +1042,7 @@ pub enum FlowControl {
 }
 #[cfg(feature = "instr_info")]
 #[rustfmt::skip]
-static GEN_DEBUG_FLOW_CONTROL: [&str; 10] = [
+const GEN_DEBUG_FLOW_CONTROL: [&str; 10] = [
 	"Next",
 	"UnconditionalBranch",
 	"IndirectBranch",
@@ -1420,7 +1420,7 @@ pub enum OpCodeOperandKind {
 }
 #[cfg(all(feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_OP_CODE_OPERAND_KIND: [&str; 109] = [
+const GEN_DEBUG_OP_CODE_OPERAND_KIND: [&str; 109] = [
 	"None",
 	"farbr2_2",
 	"farbr4_2",
@@ -1677,7 +1677,7 @@ pub enum MvexEHBit {
 }
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-static GEN_DEBUG_MVEX_EHBIT: [&str; 3] = [
+const GEN_DEBUG_MVEX_EHBIT: [&str; 3] = [
 	"None",
 	"EH0",
 	"EH1",
@@ -2217,7 +2217,7 @@ pub enum CpuidFeature {
 }
 #[cfg(feature = "instr_info")]
 #[rustfmt::skip]
-static GEN_DEBUG_CPUID_FEATURE: [&str; 178] = [
+const GEN_DEBUG_CPUID_FEATURE: [&str; 178] = [
 	"INTEL8086",
 	"INTEL8086_ONLY",
 	"INTEL186",
@@ -2593,7 +2593,7 @@ pub enum OpAccess {
 }
 #[cfg(feature = "instr_info")]
 #[rustfmt::skip]
-static GEN_DEBUG_OP_ACCESS: [&str; 8] = [
+const GEN_DEBUG_OP_ACCESS: [&str; 8] = [
 	"None",
 	"Read",
 	"CondRead",
@@ -2776,7 +2776,7 @@ pub enum ConditionCode {
 }
 #[cfg(feature = "instr_info")]
 #[rustfmt::skip]
-static GEN_DEBUG_CONDITION_CODE: [&str; 17] = [
+const GEN_DEBUG_CONDITION_CODE: [&str; 17] = [
 	"None",
 	"o",
 	"no",
@@ -2943,7 +2943,7 @@ pub enum MandatoryPrefix {
 }
 #[cfg(all(feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_MANDATORY_PREFIX: [&str; 5] = [
+const GEN_DEBUG_MANDATORY_PREFIX: [&str; 5] = [
 	"None",
 	"PNP",
 	"P66",
@@ -3107,7 +3107,7 @@ pub enum OpCodeTableKind {
 }
 #[cfg(all(feature = "encoder", feature = "op_code_info"))]
 #[rustfmt::skip]
-static GEN_DEBUG_OP_CODE_TABLE_KIND: [&str; 9] = [
+const GEN_DEBUG_OP_CODE_TABLE_KIND: [&str; 9] = [
 	"Normal",
 	"T0F",
 	"T0F38",
@@ -3259,7 +3259,7 @@ pub(crate) enum InstrScale {
 	Scale8 = 3,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_INSTR_SCALE: [&str; 4] = [
+const GEN_DEBUG_INSTR_SCALE: [&str; 4] = [
 	"Scale1",
 	"Scale2",
 	"Scale4",
@@ -3424,7 +3424,7 @@ pub enum MvexConvFn {
 }
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-static GEN_DEBUG_MVEX_CONV_FN: [&str; 13] = [
+const GEN_DEBUG_MVEX_CONV_FN: [&str; 13] = [
 	"None",
 	"Sf32",
 	"Sf64",
@@ -3613,7 +3613,7 @@ pub enum MvexRegMemConv {
 }
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-static GEN_DEBUG_MVEX_REG_MEM_CONV: [&str; 17] = [
+const GEN_DEBUG_MVEX_REG_MEM_CONV: [&str; 17] = [
 	"None",
 	"RegSwizzleNone",
 	"RegSwizzleCdab",
@@ -3800,7 +3800,7 @@ pub enum MvexTupleTypeLutKind {
 }
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-static GEN_DEBUG_MVEX_TUPLE_TYPE_LUT_KIND: [&str; 14] = [
+const GEN_DEBUG_MVEX_TUPLE_TYPE_LUT_KIND: [&str; 14] = [
 	"Int32",
 	"Int32_Half",
 	"Int32_4to16",

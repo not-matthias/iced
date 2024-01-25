@@ -7,520 +7,520 @@ use crate::encoder::ops::*;
 use crate::*;
 
 #[rustfmt::skip]
-static NONE: InvalidOpHandler = InvalidOpHandler;
+const NONE: InvalidOpHandler = InvalidOpHandler;
 #[rustfmt::skip]
-static OPR_DI: OprDI = OprDI;
+const OPR_DI: OprDI = OprDI;
 #[rustfmt::skip]
-static OP_A_2: OpA = OpA {
+const OP_A_2: OpA = OpA {
 	size: 2
 };
 #[rustfmt::skip]
-static OP_A_4: OpA = OpA {
+const OP_A_4: OpA = OpA {
 	size: 4
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_HX_EAX_R15_D: OpHx = OpHx {
+const OP_HX_EAX_R15_D: OpHx = OpHx {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[cfg(any(not(feature = "no_vex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_HX_K0_K7: OpHx = OpHx {
+const OP_HX_K0_K7: OpHx = OpHx {
 	reg_lo: Register::K0,
 	reg_hi: Register::K7,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_HX_RAX_R15: OpHx = OpHx {
+const OP_HX_RAX_R15: OpHx = OpHx {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_HX_TMM0_TMM7: OpHx = OpHx {
+const OP_HX_TMM0_TMM7: OpHx = OpHx {
 	reg_lo: Register::TMM0,
 	reg_hi: Register::TMM7,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_HX_XMM0_XMM15: OpHx = OpHx {
+const OP_HX_XMM0_XMM15: OpHx = OpHx {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_HX_XMM0_XMM31: OpHx = OpHx {
+const OP_HX_XMM0_XMM31: OpHx = OpHx {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM31,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_HX_YMM0_YMM15: OpHx = OpHx {
+const OP_HX_YMM0_YMM15: OpHx = OpHx {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_HX_YMM0_YMM31: OpHx = OpHx {
+const OP_HX_YMM0_YMM31: OpHx = OpHx {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM31,
 };
 #[cfg(any(not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_HX_ZMM0_ZMM31: OpHx = OpHx {
+const OP_HX_ZMM0_ZMM31: OpHx = OpHx {
 	reg_lo: Register::ZMM0,
 	reg_hi: Register::ZMM31,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_I4: OpI4 = OpI4;
+const OP_I4: OpI4 = OpI4;
 #[rustfmt::skip]
-static OP_IB_IMMEDIATE8: OpIb = OpIb {
+const OP_IB_IMMEDIATE8: OpIb = OpIb {
 	op_kind: OpKind::Immediate8,
 };
 #[rustfmt::skip]
-static OP_IB_IMMEDIATE8TO16: OpIb = OpIb {
+const OP_IB_IMMEDIATE8TO16: OpIb = OpIb {
 	op_kind: OpKind::Immediate8to16,
 };
 #[rustfmt::skip]
-static OP_IB_IMMEDIATE8TO32: OpIb = OpIb {
+const OP_IB_IMMEDIATE8TO32: OpIb = OpIb {
 	op_kind: OpKind::Immediate8to32,
 };
 #[rustfmt::skip]
-static OP_IB_IMMEDIATE8TO64: OpIb = OpIb {
+const OP_IB_IMMEDIATE8TO64: OpIb = OpIb {
 	op_kind: OpKind::Immediate8to64,
 };
 #[rustfmt::skip]
-static OP_ID_IMMEDIATE32: OpId = OpId {
+const OP_ID_IMMEDIATE32: OpId = OpId {
 	op_kind: OpKind::Immediate32,
 };
 #[rustfmt::skip]
-static OP_ID_IMMEDIATE32TO64: OpId = OpId {
+const OP_ID_IMMEDIATE32TO64: OpId = OpId {
 	op_kind: OpKind::Immediate32to64,
 };
 #[rustfmt::skip]
-static OP_IMM_1: OpImm = OpImm {
+const OP_IMM_1: OpImm = OpImm {
 	value: 1
 };
 #[rustfmt::skip]
-static OP_IQ: OpIq = OpIq;
+const OP_IQ: OpIq = OpIq;
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_IS_X_XMM0_XMM15: OpIsX = OpIsX {
+const OP_IS_X_XMM0_XMM15: OpIsX = OpIsX {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM15,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_IS_X_YMM0_YMM15: OpIsX = OpIsX {
+const OP_IS_X_YMM0_YMM15: OpIsX = OpIsX {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM15,
 };
 #[rustfmt::skip]
-static OP_IW: OpIw = OpIw;
+const OP_IW: OpIw = OpIw;
 #[rustfmt::skip]
-static OP_JDISP_2: OpJdisp = OpJdisp {
+const OP_JDISP_2: OpJdisp = OpJdisp {
 	displ_size: 2
 };
 #[rustfmt::skip]
-static OP_JDISP_4: OpJdisp = OpJdisp {
+const OP_JDISP_4: OpJdisp = OpJdisp {
 	displ_size: 4
 };
 #[rustfmt::skip]
-static OP_JX_2: OpJx = OpJx {
+const OP_JX_2: OpJx = OpJx {
 	imm_size: 2
 };
 #[rustfmt::skip]
-static OP_JX_4: OpJx = OpJx {
+const OP_JX_4: OpJx = OpJx {
 	imm_size: 4
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH16_1: OpJ = OpJ {
+const OP_J_NEAR_BRANCH16_1: OpJ = OpJ {
 	op_kind: OpKind::NearBranch16,
 	imm_size: 1
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH16_2: OpJ = OpJ {
+const OP_J_NEAR_BRANCH16_2: OpJ = OpJ {
 	op_kind: OpKind::NearBranch16,
 	imm_size: 2
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH32_1: OpJ = OpJ {
+const OP_J_NEAR_BRANCH32_1: OpJ = OpJ {
 	op_kind: OpKind::NearBranch32,
 	imm_size: 1
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH32_4: OpJ = OpJ {
+const OP_J_NEAR_BRANCH32_4: OpJ = OpJ {
 	op_kind: OpKind::NearBranch32,
 	imm_size: 4
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH64_1: OpJ = OpJ {
+const OP_J_NEAR_BRANCH64_1: OpJ = OpJ {
 	op_kind: OpKind::NearBranch64,
 	imm_size: 1
 };
 #[rustfmt::skip]
-static OP_J_NEAR_BRANCH64_4: OpJ = OpJ {
+const OP_J_NEAR_BRANCH64_4: OpJ = OpJ {
 	op_kind: OpKind::NearBranch64,
 	imm_size: 4
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_AL_R15_L: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_AL_R15_L: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::AL,
 	reg_hi: Register::R15L,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_AX_R15_W: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_AX_R15_W: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::AX,
 	reg_hi: Register::R15W,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_BND0_BND3: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_BND0_BND3: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::BND0,
 	reg_hi: Register::BND3,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_DR0_DR15: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_DR0_DR15: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::DR0,
 	reg_hi: Register::DR15,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_EAX_R15_D: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_EAX_R15_D: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_ES_GS: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_ES_GS: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::ES,
 	reg_hi: Register::GS,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_F0_CR0_CR15: OpModRM_regF0 = OpModRM_regF0 {
+const OP_MOD_RM_REG_F0_CR0_CR15: OpModRM_regF0 = OpModRM_regF0 {
 	reg_lo: Register::CR0,
 	reg_hi: Register::CR15,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_K0_K7: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_K0_K7: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::K0,
 	reg_hi: Register::K7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_MEM_AX_R15_W: OpModRM_reg_mem = OpModRM_reg_mem {
+const OP_MOD_RM_REG_MEM_AX_R15_W: OpModRM_reg_mem = OpModRM_reg_mem {
 	reg_lo: Register::AX,
 	reg_hi: Register::R15W,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_MEM_EAX_R15_D: OpModRM_reg_mem = OpModRM_reg_mem {
+const OP_MOD_RM_REG_MEM_EAX_R15_D: OpModRM_reg_mem = OpModRM_reg_mem {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_MEM_RAX_R15: OpModRM_reg_mem = OpModRM_reg_mem {
+const OP_MOD_RM_REG_MEM_RAX_R15: OpModRM_reg_mem = OpModRM_reg_mem {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_MM0_MM7: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_MM0_MM7: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::MM0,
 	reg_hi: Register::MM7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_RAX_R15: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_RAX_R15: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_TMM0_TMM7: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_TMM0_TMM7: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::TMM0,
 	reg_hi: Register::TMM7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_TR0_TR7: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_TR0_TR7: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::TR0,
 	reg_hi: Register::TR7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_REG_XMM0_XMM15: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_XMM0_XMM15: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_XMM0_XMM31: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_XMM0_XMM31: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM31,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_YMM0_YMM15: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_YMM0_YMM15: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_YMM0_YMM31: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_YMM0_YMM31: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM31,
 };
 #[cfg(any(not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_REG_ZMM0_ZMM31: OpModRM_reg = OpModRM_reg {
+const OP_MOD_RM_REG_ZMM0_ZMM31: OpModRM_reg = OpModRM_reg {
 	reg_lo: Register::ZMM0,
 	reg_hi: Register::ZMM31,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_AL_R15_L: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_AL_R15_L: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::AL,
 	reg_hi: Register::R15L,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_AX_R15_W: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_AX_R15_W: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::AX,
 	reg_hi: Register::R15W,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_BND0_BND3: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_BND0_BND3: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::BND0,
 	reg_hi: Register::BND3,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_EAX_R15_D: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_EAX_R15_D: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_K0_K7: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_K0_K7: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::K0,
 	reg_hi: Register::K7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_MEM_ONLY_FALSE: OpModRM_rm_mem_only = OpModRM_rm_mem_only {
+const OP_MOD_RM_RM_MEM_ONLY_FALSE: OpModRM_rm_mem_only = OpModRM_rm_mem_only {
 	must_use_sib: false,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_MEM_ONLY_TRUE: OpModRM_rm_mem_only = OpModRM_rm_mem_only {
+const OP_MOD_RM_RM_MEM_ONLY_TRUE: OpModRM_rm_mem_only = OpModRM_rm_mem_only {
 	must_use_sib: true,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_MM0_MM7: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_MM0_MM7: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::MM0,
 	reg_hi: Register::MM7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_RAX_R15: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_RAX_R15: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_AX_R15_W: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_AX_R15_W: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::AX,
 	reg_hi: Register::R15W,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_EAX_R15_D: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_EAX_R15_D: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_evex")))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_K0_K7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_K0_K7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::K0,
 	reg_hi: Register::K7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_MM0_MM7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_MM0_MM7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::MM0,
 	reg_hi: Register::MM7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_RAX_R15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_RAX_R15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_TMM0_TMM7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_TMM0_TMM7: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::TMM0,
 	reg_hi: Register::TMM7,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_XMM0_XMM15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_XMM0_XMM15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_XMM0_XMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_XMM0_XMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM31,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_YMM0_YMM15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_YMM0_YMM15: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_YMM0_YMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_YMM0_YMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM31,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_REG_ONLY_ZMM0_ZMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
+const OP_MOD_RM_RM_REG_ONLY_ZMM0_ZMM31: OpModRM_rm_reg_only = OpModRM_rm_reg_only {
 	reg_lo: Register::ZMM0,
 	reg_hi: Register::ZMM31,
 };
 #[rustfmt::skip]
-static OP_MOD_RM_RM_XMM0_XMM15: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_XMM0_XMM15: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_XMM0_XMM31: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_XMM0_XMM31: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::XMM0,
 	reg_hi: Register::XMM31,
 };
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_YMM0_YMM15: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_YMM0_YMM15: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_YMM0_YMM31: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_YMM0_YMM31: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::YMM0,
 	reg_hi: Register::YMM31,
 };
 #[cfg(any(not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_MOD_RM_RM_ZMM0_ZMM31: OpModRM_rm = OpModRM_rm {
+const OP_MOD_RM_RM_ZMM0_ZMM31: OpModRM_rm = OpModRM_rm {
 	reg_lo: Register::ZMM0,
 	reg_hi: Register::ZMM31,
 };
 #[rustfmt::skip]
-static OP_MRBX: OpMRBX = OpMRBX;
+const OP_MRBX: OpMRBX = OpMRBX;
 #[rustfmt::skip]
-static OP_O: OpO = OpO;
+const OP_O: OpO = OpO;
 #[rustfmt::skip]
-static OP_REG_AL: OpReg = OpReg {
+const OP_REG_AL: OpReg = OpReg {
 	register: Register::AL,
 };
 #[rustfmt::skip]
-static OP_REG_AX: OpReg = OpReg {
+const OP_REG_AX: OpReg = OpReg {
 	register: Register::AX,
 };
 #[rustfmt::skip]
-static OP_REG_CL: OpReg = OpReg {
+const OP_REG_CL: OpReg = OpReg {
 	register: Register::CL,
 };
 #[rustfmt::skip]
-static OP_REG_CS: OpReg = OpReg {
+const OP_REG_CS: OpReg = OpReg {
 	register: Register::CS,
 };
 #[rustfmt::skip]
-static OP_REG_DS: OpReg = OpReg {
+const OP_REG_DS: OpReg = OpReg {
 	register: Register::DS,
 };
 #[rustfmt::skip]
-static OP_REG_DX: OpReg = OpReg {
+const OP_REG_DX: OpReg = OpReg {
 	register: Register::DX,
 };
 #[rustfmt::skip]
-static OP_REG_EAX: OpReg = OpReg {
+const OP_REG_EAX: OpReg = OpReg {
 	register: Register::EAX,
 };
 #[rustfmt::skip]
-static OP_REG_EMBED8_AL_R15_L: OpRegEmbed8 = OpRegEmbed8 {
+const OP_REG_EMBED8_AL_R15_L: OpRegEmbed8 = OpRegEmbed8 {
 	reg_lo: Register::AL,
 	reg_hi: Register::R15L,
 };
 #[rustfmt::skip]
-static OP_REG_EMBED8_AX_R15_W: OpRegEmbed8 = OpRegEmbed8 {
+const OP_REG_EMBED8_AX_R15_W: OpRegEmbed8 = OpRegEmbed8 {
 	reg_lo: Register::AX,
 	reg_hi: Register::R15W,
 };
 #[rustfmt::skip]
-static OP_REG_EMBED8_EAX_R15_D: OpRegEmbed8 = OpRegEmbed8 {
+const OP_REG_EMBED8_EAX_R15_D: OpRegEmbed8 = OpRegEmbed8 {
 	reg_lo: Register::EAX,
 	reg_hi: Register::R15D,
 };
 #[rustfmt::skip]
-static OP_REG_EMBED8_RAX_R15: OpRegEmbed8 = OpRegEmbed8 {
+const OP_REG_EMBED8_RAX_R15: OpRegEmbed8 = OpRegEmbed8 {
 	reg_lo: Register::RAX,
 	reg_hi: Register::R15,
 };
 #[rustfmt::skip]
-static OP_REG_ES: OpReg = OpReg {
+const OP_REG_ES: OpReg = OpReg {
 	register: Register::ES,
 };
 #[rustfmt::skip]
-static OP_REG_FS: OpReg = OpReg {
+const OP_REG_FS: OpReg = OpReg {
 	register: Register::FS,
 };
 #[rustfmt::skip]
-static OP_REG_GS: OpReg = OpReg {
+const OP_REG_GS: OpReg = OpReg {
 	register: Register::GS,
 };
 #[rustfmt::skip]
-static OP_REG_RAX: OpReg = OpReg {
+const OP_REG_RAX: OpReg = OpReg {
 	register: Register::RAX,
 };
 #[rustfmt::skip]
-static OP_REG_SS: OpReg = OpReg {
+const OP_REG_SS: OpReg = OpReg {
 	register: Register::SS,
 };
 #[rustfmt::skip]
-static OP_REG_ST0: OpReg = OpReg {
+const OP_REG_ST0: OpReg = OpReg {
 	register: Register::ST0,
 };
 #[rustfmt::skip]
-static OP_REG_STI: OpRegSTi = OpRegSTi;
+const OP_REG_STI: OpRegSTi = OpRegSTi;
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_VSIB_XMM0_XMM15: OpVsib = OpVsib {
+const OP_VSIB_XMM0_XMM15: OpVsib = OpVsib {
 	vsib_index_reg_lo: Register::XMM0,
 	vsib_index_reg_hi: Register::XMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_VSIB_XMM0_XMM31: OpVsib = OpVsib {
+const OP_VSIB_XMM0_XMM31: OpVsib = OpVsib {
 	vsib_index_reg_lo: Register::XMM0,
 	vsib_index_reg_hi: Register::XMM31,
 };
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-static OP_VSIB_YMM0_YMM15: OpVsib = OpVsib {
+const OP_VSIB_YMM0_YMM15: OpVsib = OpVsib {
 	vsib_index_reg_lo: Register::YMM0,
 	vsib_index_reg_hi: Register::YMM15,
 };
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static OP_VSIB_YMM0_YMM31: OpVsib = OpVsib {
+const OP_VSIB_YMM0_YMM31: OpVsib = OpVsib {
 	vsib_index_reg_lo: Register::YMM0,
 	vsib_index_reg_hi: Register::YMM31,
 };
 #[cfg(any(not(feature = "no_evex"), feature = "mvex"))]
 #[rustfmt::skip]
-static OP_VSIB_ZMM0_ZMM31: OpVsib = OpVsib {
+const OP_VSIB_ZMM0_ZMM31: OpVsib = OpVsib {
 	vsib_index_reg_lo: Register::ZMM0,
 	vsib_index_reg_hi: Register::ZMM31,
 };
 #[rustfmt::skip]
-static OP_X: OpX = OpX;
+const OP_X: OpX = OpX;
 #[rustfmt::skip]
-static OP_Y: OpY = OpY;
+const OP_Y: OpY = OpY;
 
 #[rustfmt::skip]
-pub(super) static LEGACY_TABLE: [&(dyn Op + Sync); 76] = [
+pub(super) const LEGACY_TABLE: [&(dyn Op + Sync); 76] = [
 	&NONE,// None
 	&OP_A_2,// farbr2_2
 	&OP_A_4,// farbr4_2
@@ -600,7 +600,7 @@ pub(super) static LEGACY_TABLE: [&(dyn Op + Sync); 76] = [
 ];
 #[cfg(not(feature = "no_vex"))]
 #[rustfmt::skip]
-pub(super) static VEX_TABLE: [&(dyn Op + Sync); 39] = [
+pub(super) const VEX_TABLE: [&(dyn Op + Sync); 39] = [
 	&NONE,// None
 	&OP_MOD_RM_RM_MEM_ONLY_FALSE,// mem
 	&OP_VSIB_XMM0_XMM15,// mem_vsib32x
@@ -643,7 +643,7 @@ pub(super) static VEX_TABLE: [&(dyn Op + Sync); 39] = [
 ];
 #[cfg(not(feature = "no_xop"))]
 #[rustfmt::skip]
-pub(super) static XOP_TABLE: [&(dyn Op + Sync); 19] = [
+pub(super) const XOP_TABLE: [&(dyn Op + Sync); 19] = [
 	&NONE,// None
 	&OP_MOD_RM_RM_EAX_R15_D,// r32_or_mem
 	&OP_MOD_RM_RM_RAX_R15,// r64_or_mem
@@ -666,7 +666,7 @@ pub(super) static XOP_TABLE: [&(dyn Op + Sync); 19] = [
 ];
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-pub(super) static EVEX_TABLE: [&(dyn Op + Sync); 32] = [
+pub(super) const EVEX_TABLE: [&(dyn Op + Sync); 32] = [
 	&NONE,// None
 	&OP_MOD_RM_RM_MEM_ONLY_FALSE,// mem
 	&OP_VSIB_XMM0_XMM31,// mem_vsib32x
@@ -702,7 +702,7 @@ pub(super) static EVEX_TABLE: [&(dyn Op + Sync); 32] = [
 ];
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-pub(super) static MVEX_TABLE: [&(dyn Op + Sync); 9] = [
+pub(super) const MVEX_TABLE: [&(dyn Op + Sync); 9] = [
 	&NONE,// None
 	&OP_MOD_RM_RM_MEM_ONLY_FALSE,// mem
 	&OP_VSIB_ZMM0_ZMM31,// mem_vsib32z

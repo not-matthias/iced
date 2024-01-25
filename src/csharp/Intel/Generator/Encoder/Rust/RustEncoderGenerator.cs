@@ -96,7 +96,7 @@ namespace Generator.Encoder.Rust {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
 				if (feature is not null)
 					writer.WriteLine(feature);
-				writer.WriteLine($"pub(super) static {name}: [{declTypeStr}; {table.Length}] = [");
+				writer.WriteLine($"pub(super) const {name}: [{declTypeStr}; {table.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var info in table)
 						writer.WriteLine($"{idConverter.ToDeclTypeAndValue(info.opCodeOperandKind)},");
@@ -134,7 +134,7 @@ namespace Generator.Encoder.Rust {
 					if (features is not null)
 						writer.WriteLine(features);
 					writer.WriteLine(RustConstants.AttributeNoRustFmt);
-					writer.Write($"static {info.Name}: {structName} = {structName}");
+					writer.Write($"const {info.Name}: {structName} = {structName}");
 					switch (info.OpHandlerKind) {
 					case OpHandlerKind.OpA:
 						if (info.Args.Length != 1)
@@ -295,7 +295,7 @@ namespace Generator.Encoder.Rust {
 				if (feature is not null)
 					writer.WriteLine(feature);
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static {name}: [&(dyn Op + Sync); {all.Length}] = [");
+				writer.WriteLine($"pub(super) const {name}: [&(dyn Op + Sync); {all.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var value in all) {
 						var info = dict[(value.opHandlerKind, value.args)];
@@ -384,7 +384,7 @@ namespace Generator.Encoder.Rust {
 				writer.WriteFileHeader();
 				foreach (var info in encoderInfo) {
 					writer.WriteLine(RustConstants.AttributeNoRustFmt);
-					writer.WriteLine($"pub(super) static {info.name}: [u32; {defs.Length}] = [");
+					writer.WriteLine($"pub(super) const {info.name}: [u32; {defs.Length}] = [");
 					using (writer.Indent()) {
 						foreach (var vinfo in info.values)
 							writer.WriteLine($"{NumberFormatter.FormatHexUInt32WithSep(vinfo.value)},// {vinfo.def.Code.Name(idConverter)}");
@@ -403,7 +403,7 @@ namespace Generator.Encoder.Rust {
 				writer.WriteLine("use crate::{MvexConvFn, MvexEHBit, MvexTupleTypeLutKind};");
 				writer.WriteLine();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static MVEX_INFO: [MvexInfo; {infos.Length}] = [");
+				writer.WriteLine($"pub(super) const MVEX_INFO: [MvexInfo; {infos.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var (def, mvex) in infos)
 						writer.WriteLine($"MvexInfo::new({idConverter.ToDeclTypeAndValue(mvex.TupleTypeLutKind)}, {idConverter.ToDeclTypeAndValue(mvex.EHBit)}, {idConverter.ToDeclTypeAndValue(mvex.ConvFn)}, 0x{mvex.InvalidConvFns:X02}, 0x{mvex.InvalidSwizzleFns:X02}, 0x{(uint)mvex.Flags1:X02}, 0x{(uint)mvex.Flags2:X02}),// {idConverter.ToDeclTypeAndValue(def.Code)}");
@@ -421,7 +421,7 @@ namespace Generator.Encoder.Rust {
 				writer.WriteLine();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
 				var totalSize = mvexData.Select(x => x.enumValues.Length).Sum();
-				writer.WriteLine($"pub(crate) static {tableName}: [{declTypeStr}; {totalSize}] = [");
+				writer.WriteLine($"pub(crate) const {tableName}: [{declTypeStr}; {totalSize}] = [");
 				using (writer.Indent()) {
 					foreach (var (ttLutKind, enumValues) in mvexData) {
 						var ttLutKindValue = genTypes[TypeIds.MvexTupleTypeLutKind][ttLutKind.ToString()];
@@ -440,7 +440,7 @@ namespace Generator.Encoder.Rust {
 			var filename = generatorContext.Types.Dirs.GetRustFilename("encoder.rs");
 			new FileUpdater(TargetLanguage.Rust, "ImmSizes", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static IMM_SIZES: [u32; {immSizes.Length}] = [");
+				writer.WriteLine($"const IMM_SIZES: [u32; {immSizes.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var info in immSizes)
 						writer.WriteLine($"{info.size},// {info.value.Name(idConverter)}");
@@ -489,7 +489,7 @@ namespace Generator.Encoder.Rust {
 			using (var writer = new FileWriter(TargetLanguage.Rust, FileUtils.OpenWrite(filename))) {
 				writer.WriteFileHeader();
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static TO_MNEMONIC_STR: [&str; {values.Length}] = [");
+				writer.WriteLine($"pub(super) const TO_MNEMONIC_STR: [&str; {values.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var value in values)
 						writer.WriteLine($"\"{value.RawName.ToLowerInvariant()}\",");
@@ -518,7 +518,7 @@ namespace Generator.Encoder.Rust {
 			new FileUpdater(TargetLanguage.Rust, "ToDecoderOptionsTable", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.FeatureDecoder);
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static TO_DECODER_OPTIONS: [u32; {values.Length}] = [");
+				writer.WriteLine($"const TO_DECODER_OPTIONS: [u32; {values.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var (_, decoderOptions) in values)
 						writer.WriteLine($"{decoderOptions.DeclaringType.Name(idConverter)}::{idConverter.Constant(decoderOptions.RawName)},");

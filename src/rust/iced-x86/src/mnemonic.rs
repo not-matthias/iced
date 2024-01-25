@@ -1910,7 +1910,7 @@ pub enum Mnemonic {
 	Vsm4rnds4 = 1893,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_MNEMONIC: [&str; 1894] = [
+const GEN_DEBUG_MNEMONIC: [&str; 1894] = [
 	"INVALID",
 	"Aaa",
 	"Aad",

@@ -155,7 +155,7 @@ pub(crate) enum OpSize {
 	Size64,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_OP_SIZE: [&str; 3] = [
+const GEN_DEBUG_OP_SIZE: [&str; 3] = [
 	"Size16",
 	"Size32",
 	"Size64",
@@ -189,7 +189,7 @@ pub enum DecoderError {
 	NoMoreBytes = 2,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_DECODER_ERROR: [&str; 3] = [
+const GEN_DEBUG_DECODER_ERROR: [&str; 3] = [
 	"None",
 	"InvalidInstruction",
 	"NoMoreBytes",

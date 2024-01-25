@@ -13,7 +13,7 @@ pub(crate) enum SerializedDataKind {
 	ArrayReference,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_SERIALIZED_DATA_KIND: [&str; 2] = [
+const GEN_DEBUG_SERIALIZED_DATA_KIND: [&str; 2] = [
 	"HandlerReference",
 	"ArrayReference",
 ];
@@ -255,7 +255,7 @@ pub(crate) enum LegacyOpCodeHandlerKind {
 	Simple5_a32,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_LEGACY_OP_CODE_HANDLER_KIND: [&str; 215] = [
+const GEN_DEBUG_LEGACY_OP_CODE_HANDLER_KIND: [&str; 215] = [
 	"Bitness",
 	"Bitness_DontReadModRM",
 	"Invalid",
@@ -574,7 +574,7 @@ pub(crate) enum EvexOpCodeHandlerKind {
 }
 #[cfg(not(feature = "no_evex"))]
 #[rustfmt::skip]
-static GEN_DEBUG_EVEX_OP_CODE_HANDLER_KIND: [&str; 77] = [
+const GEN_DEBUG_EVEX_OP_CODE_HANDLER_KIND: [&str; 77] = [
 	"Invalid",
 	"Invalid2",
 	"Dup",
@@ -703,7 +703,7 @@ pub(crate) enum MvexOpCodeHandlerKind {
 }
 #[cfg(feature = "mvex")]
 #[rustfmt::skip]
-static GEN_DEBUG_MVEX_OP_CODE_HANDLER_KIND: [&str; 23] = [
+const GEN_DEBUG_MVEX_OP_CODE_HANDLER_KIND: [&str; 23] = [
 	"Invalid",
 	"Invalid2",
 	"Dup",
@@ -834,7 +834,7 @@ pub(crate) enum VexOpCodeHandlerKind {
 }
 #[cfg(any(not(feature = "no_vex"), not(feature = "no_xop")))]
 #[rustfmt::skip]
-static GEN_DEBUG_VEX_OP_CODE_HANDLER_KIND: [&str; 79] = [
+const GEN_DEBUG_VEX_OP_CODE_HANDLER_KIND: [&str; 79] = [
 	"Invalid",
 	"Invalid2",
 	"Dup",

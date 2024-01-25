@@ -64,7 +64,7 @@ pub(crate) enum CtorKind {
 	reverse,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_CTOR_KIND: [&str; 53] = [
+const GEN_DEBUG_CTOR_KIND: [&str; 53] = [
 	"Previous",
 	"Normal_1",
 	"Normal_2",
@@ -149,7 +149,7 @@ pub(crate) enum SignExtendInfo {
 	Sex4,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_SIGN_EXTEND_INFO: [&str; 7] = [
+const GEN_DEBUG_SIGN_EXTEND_INFO: [&str; 7] = [
 	"None",
 	"Sex1to2",
 	"Sex1to4",
@@ -185,7 +185,7 @@ pub(crate) enum SizeOverride {
 	Size64,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_SIZE_OVERRIDE: [&str; 4] = [
+const GEN_DEBUG_SIZE_OVERRIDE: [&str; 4] = [
 	"None",
 	"Size16",
 	"Size32",
@@ -221,7 +221,7 @@ pub(crate) enum BranchSizeInfo {
 	Short,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_BRANCH_SIZE_INFO: [&str; 7] = [
+const GEN_DEBUG_BRANCH_SIZE_INFO: [&str; 7] = [
 	"None",
 	"Near",
 	"NearWord",
@@ -329,7 +329,7 @@ pub(crate) enum InstrOpKind {
 	DeclareQword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_INSTR_OP_KIND: [&str; 38] = [
+const GEN_DEBUG_INSTR_OP_KIND: [&str; 38] = [
 	"Register",
 	"NearBranch16",
 	"NearBranch32",
@@ -396,7 +396,7 @@ pub(crate) enum MemorySizeInfo {
 	Qword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_MEMORY_SIZE_INFO: [&str; 4] = [
+const GEN_DEBUG_MEMORY_SIZE_INFO: [&str; 4] = [
 	"None",
 	"Word",
 	"Dword",
@@ -428,7 +428,7 @@ pub(crate) enum FarMemorySizeInfo {
 	Dword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_FAR_MEMORY_SIZE_INFO: [&str; 3] = [
+const GEN_DEBUG_FAR_MEMORY_SIZE_INFO: [&str; 3] = [
 	"None",
 	"Word",
 	"Dword",

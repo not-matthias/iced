@@ -1210,7 +1210,7 @@ pub enum Register {
 	DontUseFF = 255,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_REGISTER: [&str; 256] = [
+const GEN_DEBUG_REGISTER: [&str; 256] = [
 	"None",
 	"AL",
 	"CL",

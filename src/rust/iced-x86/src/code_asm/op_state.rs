@@ -21,7 +21,7 @@ pub(crate) enum MemoryOperandSize {
 	Zword,
 }
 #[rustfmt::skip]
-static GEN_DEBUG_MEMORY_OPERAND_SIZE: [&str; 10] = [
+const GEN_DEBUG_MEMORY_OPERAND_SIZE: [&str; 10] = [
 	"None",
 	"Byte",
 	"Word",
