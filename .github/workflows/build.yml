@@ -1,5 +1,6 @@
 name: GitHub CI
 on:
+  workflow_dispatch:
   push:
     paths:
       - ".github/workflows/build.yml"
