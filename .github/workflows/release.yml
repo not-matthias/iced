@@ -1,6 +1,7 @@
 # This is triggered when a new release is created (using the GitHub UI)
 name: New Release
 on:
+  workflow_dispatch:
   release:
     types: [released]
 
