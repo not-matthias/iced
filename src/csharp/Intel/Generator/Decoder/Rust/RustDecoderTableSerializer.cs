@@ -13,7 +13,7 @@ namespace Generator.Decoder.Rust {
 		public void Serialize(FileWriter writer) {
 			writer.WriteFileHeader();
 			writer.WriteLine(RustConstants.AttributeNoRustFmt);
-			writer.WriteLine($"pub(super) static TBL_DATA: &[u8] = &[");
+			writer.WriteLine($"pub(super) const TBL_DATA: &[u8] = &[");
 			using (writer.Indent())
 				SerializeCore(new TextFileByteTableWriter(writer));
 			writer.WriteLine("];");

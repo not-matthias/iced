@@ -87,7 +87,7 @@ namespace Generator.Formatters.Rust {
 			var maxMemSizeLen = switchValues.Max(a => a.s.Length);
 			new FileUpdater(TargetLanguage.Rust, "MemorySizes", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
+				writer.WriteLine($"const MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						writer.WriteByte(checked((byte)def.Fast.Value));
@@ -100,7 +100,7 @@ namespace Generator.Formatters.Rust {
 				// If this fails, the Rust code will also need to be updated, see FastStringMemorySize in fast.rs
 				if (maxMemSizeLen > FastStringMemorySize)
 					throw new InvalidOperationException();
-				writer.WriteLine($"static MEM_SIZE_TBL_STRINGS: [&str; {switchValues.Length}] = [");
+				writer.WriteLine($"const MEM_SIZE_TBL_STRINGS: [&str; {switchValues.Length}] = [");
 				using (writer.Indent()) {
 					var paddedString = new char[FastStringMemorySize];
 					foreach (var (kw, s) in switchValues) {
@@ -127,7 +127,7 @@ namespace Generator.Formatters.Rust {
 				int first = (int)icedConstants[IcedConstants.FirstBroadcastMemorySizeName].ValueUInt64;
 				int len = defs.Length - first;
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static BCST_TO_DATA: [u8; {len}] = [");
+				writer.WriteLine($"const BCST_TO_DATA: [u8; {len}] = [");
 				using (writer.Indent()) {
 					for (int i = first; i < defs.Length; i++) {
 						writer.WriteByte(checked((byte)defs[i].BroadcastToKind.Value));
@@ -162,7 +162,7 @@ namespace Generator.Formatters.Rust {
 			});
 			new FileUpdater(TargetLanguage.Rust, "MemorySizes", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
+				writer.WriteLine($"const MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						uint value = def.Intel.Value | (def.BroadcastToKind.Value << BroadcastToKindShift);
@@ -212,7 +212,7 @@ namespace Generator.Formatters.Rust {
 				writer.WriteLine($"const {idConverter.Constant(nameof(SizeKindShift))}: u32 = {SizeKindShift};");
 				writer.WriteLine($"const {idConverter.Constant(nameof(MemoryKeywordsMask))}: u16 = {MemoryKeywordsMask};");
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static SIZES: [u16; {sizeToIndex.Count}] = [");
+				writer.WriteLine($"const SIZES: [u16; {sizeToIndex.Count}] = [");
 				using (writer.Indent()) {
 					foreach (var size in sizeToIndex.Select(a => a.Key).OrderBy(a => a))
 						writer.WriteLine($"{size},");
@@ -221,7 +221,7 @@ namespace Generator.Formatters.Rust {
 			});
 			new FileUpdater(TargetLanguage.Rust, "MemorySizes", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static MEM_SIZE_TBL_DATA: [u16; {defs.Length}] = [");
+				writer.WriteLine($"const MEM_SIZE_TBL_DATA: [u16; {defs.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						uint value = def.Masm.Value | (sizeToIndex[def.Size] << SizeKindShift);
@@ -255,7 +255,7 @@ namespace Generator.Formatters.Rust {
 				int first = (int)icedConstants[IcedConstants.FirstBroadcastMemorySizeName].ValueUInt64;
 				int len = defs.Length - first;
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static BCST_TO_DATA: [u8; {len}] = [");
+				writer.WriteLine($"const BCST_TO_DATA: [u8; {len}] = [");
 				using (writer.Indent()) {
 					for (int i = first; i < defs.Length; i++) {
 						writer.WriteByte(checked((byte)defs[i].BroadcastToKind.Value));
@@ -266,7 +266,7 @@ namespace Generator.Formatters.Rust {
 			});
 			new FileUpdater(TargetLanguage.Rust, "MemorySizes", filename).Generate(writer => {
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"static MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
+				writer.WriteLine($"const MEM_SIZE_TBL_DATA: [u8; {defs.Length}] = [");
 				using (writer.Indent()) {
 					foreach (var def in defs) {
 						writer.WriteByte(checked((byte)def.Nasm.Value));
@@ -319,7 +319,7 @@ namespace Generator.Formatters.Rust {
 
 				int totalLen = registers.Length + registers.Sum(a => a.Length) + extraPadding;
 				writer.WriteLine(RustConstants.AttributeNoRustFmt);
-				writer.WriteLine($"pub(super) static REGS_DATA: [u8; {totalLen}] = [");
+				writer.WriteLine($"pub(super) const REGS_DATA: [u8; {totalLen}] = [");
 				int maxLen = 0;
 				using (writer.Indent()) {
 					foreach (var register in registers) {

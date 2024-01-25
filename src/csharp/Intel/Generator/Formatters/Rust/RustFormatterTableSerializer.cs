@@ -16,7 +16,7 @@ namespace Generator.Formatters.Rust {
 		public void Serialize(GenTypes genTypes, FileWriter writer, StringsTable stringsTable) {
 			writer.WriteFileHeader();
 			writer.WriteLine(RustConstants.AttributeNoRustFmt);
-			writer.WriteLine($"pub(super) static FORMATTER_TBL_DATA: &[u8] = &[");
+			writer.WriteLine($"pub(super) const FORMATTER_TBL_DATA: &[u8] = &[");
 			using (writer.Indent())
 				SerializeTable(new TextFileByteTableWriter(writer), stringsTable);
 			writer.WriteLine("];");

@@ -41,7 +41,7 @@ namespace Generator.Formatters.Rust {
 			writer.WriteLine($"pub(super) const PADDING_SIZE: usize = {extraPadding};");
 			writer.WriteLine();
 			writer.WriteLine(RustConstants.AttributeNoRustFmt);
-			writer.WriteLine($"pub(super) static STRINGS_TBL_DATA: [u8; {StringsTableSerializerUtils.GetByteCount(sortedInfos) + extraPadding}] = [");
+			writer.WriteLine($"pub(super) const STRINGS_TBL_DATA: [u8; {StringsTableSerializerUtils.GetByteCount(sortedInfos) + extraPadding}] = [");
 			using (writer.Indent())
 				StringsTableSerializerUtils.SerializeTable(new TextFileByteTableWriter(writer), sortedInfos, extraPadding, "Padding so it's possible to read FastStringMnemonic::SIZE bytes from the last value");
 			writer.WriteLine("];");
